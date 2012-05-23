@@ -1,0 +1,4 @@
+/*
+		for (int i = 0; i < 640*480; i++){
+		int aux=static_cast<int>(static_cast<double>(depthimage[i])*255.0/8192.0);
+				imgDepth->imageData[i]=aux;*/

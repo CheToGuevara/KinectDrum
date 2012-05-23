@@ -1,0 +1,12 @@
+    2652	[INFO]	XnLog.cpp	169	Log system initialized. Console: 0, File: 1, Severity: WARNING, Masks: ALL
+    2866	[INFO]	XnLog.cpp	169	Log system initialized. Console: 0, File: 1, Severity: WARNING, Masks: ALL
+   56664	[WARNING]	XnModuleLoader.cpp	456	A Generator with the same description already exists!
+   56751	[WARNING]	XnModuleLoader.cpp	411	Failed to add generator 0 from module 'C:\Program Files (x86)\PrimeSense\SensorKinect\Bin\XnDeviceFile.dll'
+  144396	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2734647	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2900376	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2911060	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2967769	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2978229	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2988026	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+ 2996723	[WARNING]	XnExportedSensorDevice.cpp	73	No PS sensor is connected!

@@ -1,0 +1,6 @@
+    43705	INFO      	Log	XnLog.cpp	264	OpenNI version is 1.3.2 (Build 3)-Win32 (Jul 19 2011 16:04:50)
+    43865	INFO      	Log	XnLog.cpp	243	Filter Info - minimum severity: WARNING, masks: ALL
+1139874617	ERROR     	xnOS	Win32Network.cpp	485	recv() failed with winsock error 10054
+1139874709	ERROR     	IoNetStream	XnIONetworkStream.cpp	92	Got an error while reading network buffer: Xiron OS failed to receive a network buffer!
+1139874747	ERROR     	SensorClient	XnSensorClient.cpp	832	Server has disconnected!
+1169845899	WARNING   	SensorServer	XnSensorClient.cpp	641	Timeout when waiting for reply from sensor server!

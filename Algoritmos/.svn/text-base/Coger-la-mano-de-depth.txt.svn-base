@@ -1,0 +1,27 @@
+IplImage * img=cvCreateImage(cvSize(640,480),IPL_DEPTH_8U,1);
+		IplImage * depth=I->getDepthImage(img);
+		cvReleaseImage(&depth);
+		IplImage * rgb=I->getRGBImage();
+		//PlvImage * depth= C->nextVideoFrame(0);
+		/*cvThreshold(img, img, z-2, 255, CV_THRESH_TOZERO);
+		cvThreshold(img, img, z+2, 255, CV_THRESH_TOZERO_INV);
+		cvThreshold(img, img, 1, 255, CV_THRESH_BINARY);*/
+		XnPoint3D proyect=I->ConvertRealWorldToProjective(punto);
+		int x=static_cast<int>(proyect.X);
+		int y=static_cast<int>(proyect.Y);
+		int error=130-z*2;
+		for (int i = 0; i < 640*480; i++){
+				
+				short aux=img->imageData[i];
+				int colum=(i/640)+1;
+				int fila=i%640;
+				if( fila>x-error && fila<x+error && colum>y-error && colum<y+error+10){
+					if(aux>z-2 && aux<z+2){
+						img->imageData[i]=255;
+						rgb->imageData[i*3+1]=255;
+					}else{
+						img->imageData[i]=0;
+					}
+				}else
+					img->imageData[i]=0;
+		}

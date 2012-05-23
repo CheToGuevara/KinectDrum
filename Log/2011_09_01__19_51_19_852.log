@@ -1,0 +1,8 @@
+    18504	INFO      	Log	XnLog.cpp	264	OpenNI version is 1.3.2 (Build 3)-Win32 (Jul 19 2011 16:04:50)
+    18666	INFO      	Log	XnLog.cpp	243	Filter Info - minimum severity: WARNING, masks: ALL
+  1050811	WARNING   	ModuleLoader	XnModuleLoader.cpp	463	A Generator with the same description already exists!
+  1050910	WARNING   	ModuleLoader	XnModuleLoader.cpp	418	Failed to add generator 0 from module 'C:\Program Files (x86)\PrimeSense\Sensor\Bin\XnDeviceFile.dll'
+  1179018	WARNING   	DeviceSensor	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+  1192079	WARNING   	DeviceSensor	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+  1199669	WARNING   	DeviceSensor	XnExportedSensorDevice.cpp	73	No PS sensor is connected!
+  1212538	WARNING   	DeviceSensor	XnExportedSensorDevice.cpp	73	No PS sensor is connected!

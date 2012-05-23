@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SmartInteractive">
+</Property><Property Name="Archivo de la solución" Value="C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.sln">
+</Property><Property Name="Archivo de opciones de usuario" Value="C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.suo">
+</Property><Property Name="Date" Value="lunes, 14 de mayo de 2012">
+</Property><Property Name="Time" Value="19:17">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="SmartInteractive.sln" Description="La copia C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.sln.old del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="0" Project="" Source="SmartInteractive.suo" Description="La copia C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.suo.old del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="0" Project="SmartInteractive" Source="SmartInteractive.vcproj" Description="Converting project file 'C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.vcproj'.">
+</Event><Event ErrorLevel="1" Project="SmartInteractive" Source="SmartInteractive.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="SmartInteractive" Source="SmartInteractive.vcproj" Description="Done converting to new project file 'C:\Users\Aaron\Documents\Proyecto\Repositorio\SmartInteractive.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="SmartInteractive" Source="SmartInteractive.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SmartInteractive.sln" Description="La solución se convirtió correctamente">
+</Event><Event ErrorLevel="3" Project="" Source="SmartInteractive.sln" Description="Converted">
+</Event></UpgradeLog>
