@@ -4,7 +4,7 @@
 /**
  * \class ImageSource
  *
- * \ingroup SmartInteractive
+ * \ingroup Kinect
  * 
  *
  * \brief Clase para conseguir imagenes
@@ -34,57 +34,55 @@ class ImageSource{
 
 public:
 	
-	///
+	
 	///Constructor con context ya inicializado por parametros
-	///
+	
 	ImageSource(xn::Context g_Context);
-	///
+	
 	///Constructor si se necesita la clase sola
 	ImageSource();
 
-	///
+
 	///Destructor
-	///
 	~ImageSource();
 
 private:
-	///
+	
 	///Contexto
-	///
+	
 	xn::Context context;
-	///
-	///Nodos
-	///
-	///
+
+
+	
 	///Depth nodo
-	///
+	
 	xn::DepthGenerator depthGenerator;
-	///
+	
 	///Image nodo
-	///
+	
 	xn::ImageGenerator rgbGenerator;
-	///
+	
 	///Status
-	///
+	
 	XnStatus rc;
 	
 
 public:
-	//Metodos
 
-	///
+
+	
 	///Devuelve el contexto por si lo utilizan otras clases
-	///
+	
 	xn::Context GetContext();
-	///
+	
 	///Metodo que consigue RGB
 	///return IplImage  NEED RELEASE!!!
-	///
+	
 	IplImage*getRGBImage();
-	///
+	
 	///Metodo que consigue la imagen profundidad
 	///No devuelve nada todavía
-	///
+	
 	IplImage*getDepthImage(IplImage * imgDepth=NULL);
 
 	///Metodo que consigue las coordenadas projectivas

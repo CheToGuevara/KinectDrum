@@ -13,7 +13,7 @@
 /**
  * \class TrackUser
  *
- * \ingroup SmartInteractive
+ * \ingroup Kinect
  * 
  *
  * \brief Clase para hacer Traking de personas

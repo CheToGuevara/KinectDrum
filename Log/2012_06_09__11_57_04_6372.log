@@ -1,0 +1,9 @@
+    15232	INFO      	Log	XnLog.cpp	346	New log started on 2012-06-09 11:57:04
+    15342	INFO      	Log	XnLog.cpp	350	OpenNI version is 1.5.4 (Build 0)-Win32 (May 16 2012 10:11:58)
+    15385	INFO      	Log	XnLog.cpp	319	--- Filter Info --- Minimum Severity: WARNING
+   307830	WARNING   	ModuleLoader	XnModuleLoader.cpp	461	A Generator with the same description already exists!
+   307918	WARNING   	ModuleLoader	XnModuleLoader.cpp	416	Failed to add generator 0 from module 'C:\Program Files (x86)\PrimeSense\SensorKinect\Bin\XnDeviceFile.dll'
+   373127	WARNING   	DeviceSensorProtocol	XnHostProtocol.cpp	635	Received NACK: 2
+  5080890	ERROR     	xnOS	Win32SharedMemory.cpp	190	Could not open file mapping object (2).
+  5814973	ERROR     	xnOS	Win32SharedMemory.cpp	190	Could not open file mapping object (2).
+  6829675	ERROR     	xnOS	Win32SharedMemory.cpp	190	Could not open file mapping object (2).

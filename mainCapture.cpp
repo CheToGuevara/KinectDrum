@@ -3,6 +3,7 @@
 //-----------------------------------------------------------------------------
 // General headers
 #include <stdio.h>
+#include <time.h>
 #include <Windows.h>
 
 #include <cv.h>
@@ -10,7 +11,7 @@
 #include <highgui.h>
 
 #include <Inventor/nodes/SoPerspectiveCamera.h>
-#include <Inventor/nodes/SoDirectionalLight.h>
+#include <Inventor/nodes/SoSpotLight.h>
 #include <Inventor/nodes/SoFrustumCamera.h> 
 #include <Inventor/nodes/SoSpotLight.h> 
 #include <Inventor/nodes/SoUnits.h> 
@@ -125,11 +126,15 @@ SoFrustumCamera * cam2;
 SoTransform * cabeza;
 SoRotation * rotacion;
 
+SoSpotLight * rojo;
+SoSpotLight * verde;
+SoSpotLight * azul;
+
 ///Esta función es llamada para realizar cada renderizado
 void renderCallback (void *userData, SoSensor * sensor)
 {
 
-	if(modo){
+	/*if(modo){
 		///Traemos la posicion de la cabeza.
 		SbVec3f posicion=cabeza->translation.getValue();
 		float x,y,z;
@@ -139,9 +144,9 @@ void renderCallback (void *userData, SoSensor * sensor)
 		
 
 		///Convertimos de milimetros con corrección a metros sin corrección
-		/*x += ADJUST;
-		y += ADJUST;
-		z += ADJUST;*/
+		//x += ADJUST;
+		//y += ADJUST;
+		//z += ADJUST;
 
 		///Ajustamos la camara
 		cam2->left = ( (-W_SCREEN - x ) / z ) * ndis;
@@ -150,8 +155,15 @@ void renderCallback (void *userData, SoSensor * sensor)
 		cam2->bottom = ( (-H_SCREEN - y ) / z ) * ndis;
 		
 
-	}
+	}*/
 
+	srand ( time(NULL) );
+/* generate random number: */
+	int numale = rand() % 100 + 1;
+
+	(((numale%4)==0)?rojo->on=FALSE:rojo->on=TRUE);
+	(((numale%5)==0)?verde->on=FALSE:verde->on=TRUE);
+	(((numale%3)==0)?azul->on=FALSE:azul->on=TRUE);
 	//WINDOWS
 	SoWinExaminerViewer * viewer=(SoWinExaminerViewer *) userData;
 	viewer->render();
@@ -230,21 +242,40 @@ int main(int argc, char** argv)
 
 
 	SoSeparator * escena = new SoSeparator;
+	rojo=new SoSpotLight;
+	verde=new SoSpotLight;
+	azul=new SoSpotLight;
+	rojo->direction.setValue(-0.5,-1,0);
+	rojo->color.setValue(1.0f,0.0f,0.f);
+	rojo->location.setValue(1.0f,3.f,0.0f);
+	verde->direction.setValue(0,-1,0);
+	verde->color.setValue(0.0f,1.0f,0.f);
+	verde->location.setValue(-1.0f,3.f,0.0f);
+	azul->direction.setValue(1,-1,0);
+	azul->color.setValue(0.0f,0.0f,1.f);
+	azul->location.setValue(0.0f,3.f,0.0f);
+
+	escena->addChild(rojo);
+	escena->addChild(verde);
+	escena->addChild(azul);
  
+	
 
 	SoSeparator *habitacion=new SoSeparator;
 	SoTransform * centrar = new SoTransform;
 
 	//centrar->translation.setValue(60.0f,-60.0f,60.0f);
-	centrar->translation.setValue(0,0,-3.0f);
-	centrar->scaleFactor.setValue(0.001f,0.001f,0.001f);
+	centrar->translation.setValue(0,-1.f,0.5f);
+	//centrar->scaleFactor.setValue(0.0001f,0.0001f,0.0001f);//bateria wena
+	//centrar->scaleFactor.setValue(3.f,3.f,3.f);
+
 	habitacion->addChild(centrar);
 	//Desplazamiento de la pantalla 
 
 	 // model
 	  SoFile *model = new SoFile;
 	  if (argc > 1) model->name.setValue(argv[1]);
-	  else model->name.setValue("drums.wrl");
+	  else model->name.setValue("drumconparedes.wrl");
 	  habitacion->addChild(model);
 
 	escena->addChild(habitacion);
@@ -260,6 +291,8 @@ int main(int argc, char** argv)
 	//Colocamos la camara de modo que pueda ver toda la escena
 	cam->viewAll(escena,vp1->getViewportRegion());
 
+	//cam->position.setValue(0.0f,10.0f,-10.f);
+	//cam->orientation.setValue(SbVec3f(0.0f,-1.f,1.f),0);
 	//De este separador colgará la escena que se carga de 
 	//fichero, así como las cámaras y luces encargadas de 
 	//mostrarla
@@ -287,6 +320,7 @@ int main(int argc, char** argv)
 	cabeza=DrawCoin::Get_Cabeza_Pos();
 	rotacion=DrawCoin::Get_Cabeza_Rot();
 	cam2->position.connectFrom(&cabeza->translation);
+	cam2->orientation.connectFrom(&rotacion->rotation);
 	
 	ojo_der->addChild (escena);
 

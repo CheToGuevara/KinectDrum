@@ -3,6 +3,22 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * \class SoViewportRegion
+ * 
+ * \ingroup OpenInventor
+ * 
+ *
+ * \brief Clase que hace posible tener dos regiones en el viewport
+ *
+ * 
+ * 
+ * \author Marcos Garcia
+ *
+ * \version 0.5
+ *
+ */
+
 #ifndef SOVIEWPORTREGION
 #define SOVIEWPORTREGION
 

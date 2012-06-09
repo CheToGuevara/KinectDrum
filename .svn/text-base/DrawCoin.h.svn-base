@@ -3,7 +3,7 @@
 /**
  * \class DrawCoin
  * 
- * \ingroup SmartInteractive
+ * \ingroup OpenInventor
  * 
  *
  * \brief Clase que va a procesar los eventos que le surjan.

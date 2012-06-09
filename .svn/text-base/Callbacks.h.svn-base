@@ -5,7 +5,21 @@
 // NITE headers
 #include <XnVSessionManager.h>
 
-
+/**
+ * \class Callbacks
+ * 
+ * \ingroup Kinect
+ * 
+ *
+ * \brief Clase que va a procesar los eventos que le surjan.
+ *
+ * 
+ * 
+ * \author Aaron Sujar
+ *
+ * \version 0.5
+ *
+ */
 
 
 ///

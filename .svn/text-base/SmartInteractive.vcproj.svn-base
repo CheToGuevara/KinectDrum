@@ -227,6 +227,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Main.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ProcEventos.h"
 				>
 			</File>

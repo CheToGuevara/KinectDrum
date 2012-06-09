@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OpenNI.lib XnVNite_1_3_1.lib cv210d.lib cxcore210d.lib highgui210d.lib coin3d.lib simage1d.lib sowin1d.lib opengl32.lib winmm.lib OgreMain_d.lib"
+				AdditionalDependencies="OpenNI.lib XnVNITE_1_5_2.lib cv210d.lib cxcore210d.lib highgui210d.lib coin3d.lib simage1d.lib sowin1d.lib opengl32.lib winmm.lib OgreMain_d.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;C:\OgreSDK_vc9_v1-7-2\boost_1_44\lib&quot;;&quot;C:\OgreSDK_vc9_v1-7-2\lib\debug&quot;;C:\Coin3d\lib;&quot;$(XN_NITE_INSTALL_PATH)\Lib&quot;;C:\OpenCV2.1\lib;&quot;$(OPEN_NI_LIB)&quot;"
 				GenerateDebugInformation="true"
@@ -181,6 +181,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CheckStick.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DrawCoin.cpp"
 				>
 			</File>
@@ -189,7 +193,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LightControl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\mainCapture.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Music.cpp"
 				>
 			</File>
 			<File
@@ -219,6 +231,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CheckStick.h"
+				>
+			</File>
+			<File
 				RelativePath=".\DrawCoin.h"
 				>
 			</File>
@@ -227,7 +243,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LightControl.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Main.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Music.h"
 				>
 			</File>
 			<File

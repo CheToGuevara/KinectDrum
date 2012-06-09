@@ -1,8 +1,8 @@
 #pragma once
 /**
- * \class NiteCapture
+ * \class ProcEventes
  * 
- * \ingroup SmartInteractive
+ * \ingroup Kinect
  * 
  *
  * \brief Clase que va a procesar los eventos que le surjan.

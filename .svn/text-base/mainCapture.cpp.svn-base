@@ -40,17 +40,21 @@
 
 
 
-/** @mainpage Kinect Tracking
+/** @mainpage Kinect Windows
 	*   @par Description:
 	*   - Dispositivo profundidad
 	*   
 	*
 	*   @par  more information:
 	*
-	*    asujar at vartificial dot com
-	*	\defgroup SmartInteractive SmartInteractive's class
+	*   Authors Aaron Sújar y Fco Roman Gonzalez 
+		
+	*	\defgroup Kinect Tracker's Class
+	*	\brief Clases que controlan el dispositivo de profundidad
+	*	\defgroup OpenInventor OpenInventor's Class
+	*	\brief Clases que controlan la escena
 	*	\defgroup Other Others Class
-	*   \brief Clases que controlan el dispositivo de profundidad
+	*   \brief 
 	*
 */
 
@@ -106,15 +110,17 @@ DWORD WINAPI Thread( LPVOID lpParam ){
 }
 
 
+
+
 //Constantes
 #define FPS 1.0f/25.0f  //Frames por segundo
-#define W_SCREEN 0.205f
-#define H_SCREEN 0.135f
+#define W_SCREEN 0.405f
+#define H_SCREEN 0.235f
 #define ADJUST 1.0f
 
 
 ///Variables globales
-bool modo=true;
+bool modo=false;
 SoFrustumCamera * cam2;
 SoTransform * cabeza;
 SoRotation * rotacion;
@@ -231,14 +237,14 @@ int main(int argc, char** argv)
 
 	//centrar->translation.setValue(60.0f,-60.0f,60.0f);
 	centrar->translation.setValue(0,0,-3.0f);
-	centrar->scaleFactor.setValue(0.03f,0.03f,0.03f);
+	centrar->scaleFactor.setValue(0.001f,0.001f,0.001f);
 	habitacion->addChild(centrar);
 	//Desplazamiento de la pantalla 
 
 	 // model
 	  SoFile *model = new SoFile;
 	  if (argc > 1) model->name.setValue(argv[1]);
-	  else model->name.setValue("kitchen3.wrl");
+	  else model->name.setValue("drums.wrl");
 	  habitacion->addChild(model);
 
 	escena->addChild(habitacion);
@@ -287,6 +293,7 @@ int main(int argc, char** argv)
 	//Colocamos la camara de modo que pueda ver toda la escena
 	cam2->viewAll(escena,vp2->getViewportRegion());
 	cam2->viewportMapping = SoCamera::LEAVE_ALONE;
+	cam2->position.setValue(0.0f,0.0f,0.0f);
 	
 	int Data_Of_Thread = 1;
     HANDLE Handle_Of_Thread;
