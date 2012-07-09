@@ -246,12 +246,22 @@ int TrackUser::Registrar_Eventos(){
 	XnCallbackHandle h;
 	
 	UserGenerator.RegisterUserCallbacks(NewUser, LostUser, (void*)this, h);
+	UserGenerator.RegisterToUserExit(UserExit, (void*)this, h);
+	UserGenerator.RegisterToUserReEnter(UserReEnter, (void*)this, h);
+	
 	UserGenerator.GetSkeletonCap().SetSkeletonProfile(XN_SKEL_PROFILE_ALL);
 
-	XnCallbackHandle hCalib;
+	/*XnCallbackHandle hCalib;
 	XnCallbackHandle hPose;
 	UserGenerator.GetSkeletonCap().RegisterCalibrationCallbacks(&CalibrationStart, &CalibrationEnd, (void*)this, hCalib);
-	UserGenerator.GetPoseDetectionCap().RegisterToPoseCallbacks(&PoseDetected, NULL, (void*)this, hPose);
+	UserGenerator.GetPoseDetectionCap().RegisterToPoseCallbacks(&PoseDetected, NULL, (void*)this, hPose);*/
+
+	XnCallbackHandle hCalibStart, hCalibComplete;
+	XnCallbackHandle hPoseDetected;
+	UserGenerator.GetSkeletonCap().RegisterToCalibrationStart(CalibrationStart, (void*)this, hCalibStart);
+	UserGenerator.GetSkeletonCap().RegisterToCalibrationComplete(CalibrationEnd, (void*)this, hCalibComplete);
+	UserGenerator.GetPoseDetectionCap().RegisterToPoseDetected(PoseDetected, (void*)this, hPoseDetected);
+
 
 	rc = context.StartGeneratingAll();
 	if (rc != XN_STATUS_OK){

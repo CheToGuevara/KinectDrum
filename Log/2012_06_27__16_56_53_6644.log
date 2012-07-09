@@ -1,0 +1,5 @@
+   123157	INFO      	Log	XnLog.cpp	346	New log started on 2012-06-27 16:56:53
+   123284	INFO      	Log	XnLog.cpp	350	OpenNI version is 1.5.4 (Build 0)-Win32 (May 16 2012 10:11:58)
+   123326	INFO      	Log	XnLog.cpp	319	--- Filter Info --- Minimum Severity: WARNING
+  2359596	WARNING   	ModuleLoader	XnModuleLoader.cpp	461	A Generator with the same description already exists!
+  2359691	WARNING   	ModuleLoader	XnModuleLoader.cpp	416	Failed to add generator 0 from module 'C:\Program Files (x86)\PrimeSense\SensorKinect\Bin\XnDeviceFile.dll'

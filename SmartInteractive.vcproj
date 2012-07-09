@@ -21,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\OgreSDK_vc9_v1-7-2\boost_1_44&quot;;&quot;C:\OgreSDK_vc9_v1-7-2\include\OGRE&quot;;C:\Coin3d\include;C:\OpenCV2.1\include\opencv;C:\OpenCV2.1\include;&quot;$(OPEN_NI_INCLUDE)&quot;;&quot;$(XN_NITE_INSTALL_PATH)\include&quot;"
+				AdditionalIncludeDirectories=".\framework\Win32;&quot;C:\OgreSDK_vc9_v1-7-2\boost_1_44&quot;;&quot;C:\OgreSDK_vc9_v1-7-2\include\OGRE&quot;;C:\Coin3d\include;C:\OpenCV2.1\include\opencv;C:\OpenCV2.1\include;&quot;$(OPEN_NI_INCLUDE)&quot;;&quot;$(XN_NITE_INSTALL_PATH)\include&quot;;&quot;C:\Program Files (x86)\OpenAL 1.1 SDK\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE; COIN_NOT_DLL; SOWIN_NOT_DLL"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,9 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OpenNI.lib XnVNITE_1_5_2.lib cv210d.lib cxcore210d.lib highgui210d.lib coin3d.lib simage1d.lib sowin1d.lib opengl32.lib winmm.lib OgreMain_d.lib"
+				AdditionalDependencies="OpenNI.lib XnVNITE_1_5_2.lib cv210d.lib cxcore210d.lib highgui210d.lib coin3d.lib simage1d.lib sowin1d.lib opengl32.lib winmm.lib OgreMain_d.lib OpenAL32.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;C:\OgreSDK_vc9_v1-7-2\boost_1_44\lib&quot;;&quot;C:\OgreSDK_vc9_v1-7-2\lib\debug&quot;;C:\Coin3d\lib;&quot;$(XN_NITE_INSTALL_PATH)\Lib&quot;;C:\OpenCV2.1\lib;&quot;$(OPEN_NI_LIB)&quot;"
+				AdditionalLibraryDirectories="&quot;C:\OgreSDK_vc9_v1-7-2\boost_1_44\lib&quot;;&quot;C:\OgreSDK_vc9_v1-7-2\lib\debug&quot;;C:\Coin3d\lib;&quot;$(XN_NITE_INSTALL_PATH)\Lib&quot;;C:\OpenCV2.1\lib;&quot;$(OPEN_NI_LIB)&quot;;&quot;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="0"
 				TargetMachine="1"
@@ -177,49 +177,65 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Callbacks.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CheckStick.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\DrawCoin.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ImageSource.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\LightControl.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\mainCapture.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\Music.cpp"
+			<Filter
+				Name="Kinect"
 				>
-			</File>
-			<File
-				RelativePath=".\ProcEventos.cpp"
+				<File
+					RelativePath=".\Callbacks.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ImageSource.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ProcEventos.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Sequencer.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SoViewportRegion.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\TrackUser.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="OpenInventor"
 				>
-			</File>
-			<File
-				RelativePath=".\Sequencer.cpp"
+				<File
+					RelativePath=".\DrawCoin.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Music"
 				>
-			</File>
-			<File
-				RelativePath=".\SoViewportRegion.cpp"
+				<File
+					RelativePath=".\Music.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="SpecialEffects"
 				>
-			</File>
-			<File
-				RelativePath=".\TrackUser.cpp"
-				>
-			</File>
+				<File
+					RelativePath=".\CheckStick.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\LightControl.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Archivos de encabezado"
@@ -227,55 +243,111 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Callbacks.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CheckStick.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DrawCoin.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ImageSource.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LightControl.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Main.h"
 				>
 			</File>
-			<File
-				RelativePath=".\Music.h"
+			<Filter
+				Name="Kinect"
 				>
-			</File>
-			<File
-				RelativePath=".\ProcEventos.h"
+				<File
+					RelativePath=".\Callbacks.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ImageSource.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ProcEventos.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Sequencer.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SoViewportRegion.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TrackUser.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Music"
 				>
-			</File>
-			<File
-				RelativePath=".\Sequencer.h"
+				<File
+					RelativePath=".\Music.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="SpecialEffects"
 				>
-			</File>
-			<File
-				RelativePath=".\SoViewportRegion.h"
+				<File
+					RelativePath=".\CheckStick.h"
+					>
+				</File>
+				<File
+					RelativePath=".\LightControl.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="OpenInventor"
 				>
-			</File>
-			<File
-				RelativePath=".\TrackUser.h"
+				<File
+					RelativePath=".\DrawCoin.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Other"
 				>
-			</File>
+				<File
+					RelativePath=".\Pointers.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Archivos de recursos"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\framework\Win32\aldlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\aldlist.h"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\CWaves.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\CWaves.h"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\Framework.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\Framework.h"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\LoadOAL.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\framework\Win32\LoadOAL.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

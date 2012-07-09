@@ -3,6 +3,13 @@
 //-----------------------------------------------------------------------------
 // General headers
 #include <stdio.h>
+#include "Sequencer.h"
+#include "TrackUser.h"
+#include "ImageSource.h"
+#include "DrawCoin.h"
+#include "CheckStick.h"
+#include "LightControl.h"
+#include "Pointers.h"
 #include <Windows.h>
 
 #include <cv.h>
@@ -10,7 +17,7 @@
 #include <highgui.h>
 
 #include <Inventor/nodes/SoPerspectiveCamera.h>
-#include <Inventor/nodes/SoDirectionalLight.h>
+#include <Inventor/nodes/SoSpotLight.h>
 #include <Inventor/nodes/SoFrustumCamera.h> 
 #include <Inventor/nodes/SoSpotLight.h> 
 #include <Inventor/nodes/SoUnits.h> 
@@ -28,10 +35,7 @@
 #include "SoViewportRegion.h"
 
 
-#include "Sequencer.h"
-#include "TrackUser.h"
-#include "ImageSource.h"
-#include "DrawCoin.h"
+
 
 
 
@@ -121,15 +125,14 @@ DWORD WINAPI Thread( LPVOID lpParam ){
 
 ///Variables globales
 bool modo=false;
-SoFrustumCamera * cam2;
-SoTransform * cabeza;
-SoRotation * rotacion;
+
+
 
 ///Esta función es llamada para realizar cada renderizado
 void renderCallback (void *userData, SoSensor * sensor)
 {
-
-	if(modo){
+	Pointers * mypointers=(Pointers *) userData;
+	/*if(modo){
 		///Traemos la posicion de la cabeza.
 		SbVec3f posicion=cabeza->translation.getValue();
 		float x,y,z;
@@ -139,9 +142,9 @@ void renderCallback (void *userData, SoSensor * sensor)
 		
 
 		///Convertimos de milimetros con corrección a metros sin corrección
-		/*x += ADJUST;
-		y += ADJUST;
-		z += ADJUST;*/
+		//x += ADJUST;
+		//y += ADJUST;
+		//z += ADJUST;
 
 		///Ajustamos la camara
 		cam2->left = ( (-W_SCREEN - x ) / z ) * ndis;
@@ -150,21 +153,23 @@ void renderCallback (void *userData, SoSensor * sensor)
 		cam2->bottom = ( (-H_SCREEN - y ) / z ) * ndis;
 		
 
-	}
+	}*/
 
+	mypointers->lights->playLight(0);
+	mypointers->sticks->checkHands();
 	//WINDOWS
-	SoWinExaminerViewer * viewer=(SoWinExaminerViewer *) userData;
-	viewer->render();
+	
+	mypointers->viewer->render();
 }
 
 void
 handle_keyboard(void *userData, SoEventCallback *eventCB)
 {// EVENTOS DE TECLADO
 
-	SoFrustumCamera *camara = (SoFrustumCamera *) userData;
+	
 	const SoEvent *event = eventCB->getEvent();
 	// Check for the Up and Down arrow keys being pressed.
-	if (SO_KEY_PRESS_EVENT(event, M)) {
+	/*if (SO_KEY_PRESS_EVENT(event, M)) {
 
 		if ( modo ){
 			modo=false;
@@ -179,7 +184,7 @@ handle_keyboard(void *userData, SoEventCallback *eventCB)
 		}
 
 
-	}
+	}*/
 	eventCB->setHandled();
 }
 
@@ -202,7 +207,7 @@ int main(int argc, char** argv)
 	root->addChild(new SoUnits);
 
 
-	
+	Pointers * mypointers= new Pointers();
 
 	//De este separador colgará la escena que se carga de 
 	//fichero, así como las cámaras y luces encargadas de 
@@ -227,24 +232,33 @@ int main(int argc, char** argv)
 
 	
 
-
+	
 
 	SoSeparator * escena = new SoSeparator;
- 
+	LightControl * luces;
+	luces = new LightControl(escena);
+	CheckStick * mystickcontrol;
+
+	mypointers->lights=luces;
+	
+	mypointers->viewer=v;
+	
 
 	SoSeparator *habitacion=new SoSeparator;
 	SoTransform * centrar = new SoTransform;
 
 	//centrar->translation.setValue(60.0f,-60.0f,60.0f);
-	centrar->translation.setValue(0,0,-3.0f);
-	centrar->scaleFactor.setValue(0.001f,0.001f,0.001f);
+	centrar->translation.setValue(0,-1.f,0.5f);
+	//centrar->scaleFactor.setValue(0.0001f,0.0001f,0.0001f);//bateria wena
+	//centrar->scaleFactor.setValue(3.f,3.f,3.f);
+
 	habitacion->addChild(centrar);
 	//Desplazamiento de la pantalla 
 
 	 // model
 	  SoFile *model = new SoFile;
 	  if (argc > 1) model->name.setValue(argv[1]);
-	  else model->name.setValue("drums.wrl");
+	  else model->name.setValue("drumconparedes.wrl");
 	  habitacion->addChild(model);
 
 	escena->addChild(habitacion);
@@ -252,7 +266,9 @@ int main(int argc, char** argv)
 	SoSeparator * esqueleto= new SoSeparator;
 
 	DrawCoin::CrearEsqueleto(esqueleto);
-	
+
+	mystickcontrol=new CheckStick(DrawCoin::t_cabeza,DrawCoin::t_mano_izq,DrawCoin::t_mano_der);
+	mypointers->sticks=mystickcontrol;
 
 	escena->addChild(esqueleto);
 
@@ -260,12 +276,14 @@ int main(int argc, char** argv)
 	//Colocamos la camara de modo que pueda ver toda la escena
 	cam->viewAll(escena,vp1->getViewportRegion());
 
+	//cam->position.setValue(0.0f,10.0f,-10.f);
+	//cam->orientation.setValue(SbVec3f(0.0f,-1.f,1.f),0);
 	//De este separador colgará la escena que se carga de 
 	//fichero, así como las cámaras y luces encargadas de 
 	//mostrarla
 	SoSeparator *ojo_der= new SoSeparator;
 	root->addChild (ojo_der);
-		root->addChild (ojo_izq);
+	root->addChild (ojo_izq);
     //Partimos la pantalla
     SoViewportRegion *vp2 = new SoViewportRegion();
     vp2->height=1.0f;
@@ -277,16 +295,20 @@ int main(int argc, char** argv)
     
 	//Introducimos una nueva cámara. Esta cámara pintará
 	//los draggers siempre en la misma posición 
-	cam2 = new SoFrustumCamera();	
+	SoFrustumCamera * cam2;
 
+	cam2 = new SoFrustumCamera();	
+	mypointers->camera2=cam2;
 	//cam2->farDistance = 3.f;
 
 	ojo_der->addChild(cam2);
-
+	SoTransform * cabeza;
+	SoRotation * rotacion;
 
 	cabeza=DrawCoin::Get_Cabeza_Pos();
 	rotacion=DrawCoin::Get_Cabeza_Rot();
 	cam2->position.connectFrom(&cabeza->translation);
+	cam2->orientation.connectFrom(&rotacion->rotation);
 	
 	ojo_der->addChild (escena);
 
@@ -304,13 +326,13 @@ int main(int argc, char** argv)
 
 
 	//Creamos un sensor encargado del render
-	SoTimerSensor*   rendertimer = new SoTimerSensor(renderCallback,(void *)v);
+	SoTimerSensor*   rendertimer = new SoTimerSensor(renderCallback,(void *)mypointers);
 	rendertimer->setInterval(FPS); 
 	rendertimer->schedule();
 
 
 	SoEventCallback *eventCB = new SoEventCallback;
-	eventCB->addEventCallback(SoKeyboardEvent::getClassTypeId(),handle_keyboard, cam2);
+	eventCB->addEventCallback(SoKeyboardEvent::getClassTypeId(),handle_keyboard,(void*)mypointers);
 	root->addChild(eventCB);
 	
 	

@@ -41,7 +41,7 @@ void DrawCoin::CrearEsqueleto(SoSeparator * root){
 	SoSphere *esfera =new SoSphere;
 	esfera->radius=0.1f;
 	SoCylinder *cilindro =new SoCylinder;
-	cilindro->radius=8.f;
+	cilindro->radius=0.1f;
 	cilindro->height=0.1f;
 
 	root->addChild(t_cabeza);
@@ -49,7 +49,7 @@ void DrawCoin::CrearEsqueleto(SoSeparator * root){
 	SoSeparator * cabeza = new SoSeparator;
 	SoMaterial * text_cabeza=new SoMaterial;
 	SoTransform * scala=new SoTransform;
-	//scala->scaleFactor.setValue(0.1f,0.1f,0.1f);
+	scala->scaleFactor.setValue(0.01f,0.01f,0.01f);
 	
 	root ->addChild(cabeza);
 	cabeza->addChild(text_cabeza);
@@ -225,9 +225,9 @@ SoRotation * DrawCoin::Get_Cabeza_Rot(){
 void DrawCoin::BuscarNodo(int articulacion,XnPoint3D punto, SoRotation *rot ){
 
 
-	punto.X=punto.X/100;
-	punto.Y=punto.Y/100;
-	punto.Z=punto.Z/100;
+	punto.X=punto.X/500;
+	punto.Y=punto.Y/500;
+	punto.Z=punto.Z/500;
 	switch(articulacion){
 
 		case  XN_SKEL_HEAD :

@@ -33,7 +33,6 @@ public:
 	
 	
 
-private:
 	static SoTransform * t_cabeza;
 	static SoRotation * t_rot_cabeza;
 	static SoTransform * t_cuello; 
